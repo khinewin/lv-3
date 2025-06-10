@@ -1,9 +1,6 @@
 @extends("layouts.app")
-
 @section("app_title", "User account registration")
-
 @section("app_content")
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-sm-6 col-md-4">
@@ -40,8 +37,11 @@
                 </form>
             </div>
         </div>
+        <div>Alreay has an account ? <a href="{{ route('login') }}">Signin<a></div>
         </div>
     </div>
 </div>
 
 @stop
+
+
