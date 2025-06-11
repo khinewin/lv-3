@@ -9,6 +9,9 @@ use Auth;
 class AuthController extends Controller
 {
     public function getLogin(){
+        if(Auth::check()){
+            return redirect()->route("dashboard");
+        }
         return view("auth.login");
     }
     public function postLogin(Request $request){
@@ -41,6 +44,9 @@ class AuthController extends Controller
 
     }
     public function getRegister(){
+        if(Auth::check()){
+            return redirect()->route("dashboard");
+        }
         return view("auth.register");
     }
 }
