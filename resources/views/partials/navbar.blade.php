@@ -1,5 +1,8 @@
 <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
   <div class="container">
+    @auth
+    <a href="#mySidebar" rel="noopener noreferrer" data-bs-toggle="offcanvas" class="navbar-brand"><span class="navbar-toggler-icon"></span></a>
+    @endauth
     <a class="navbar-brand" href="/">Simple Blog</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
