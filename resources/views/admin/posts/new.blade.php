@@ -7,9 +7,10 @@
     <h2>Add post</h2>
     <div class="row justify-content-center">
         <div class="col-sm-6">
+            @include("partials.alert")
             <div class="card shadow">
                 <div class="card-body">
-                    <form action="{{ route('new_post') }}" method="post">
+                    <form action="{{ route('new_post') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group mb-3">
                             <label for="image">Post image</label>
