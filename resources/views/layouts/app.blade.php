@@ -8,7 +8,7 @@
   </head>
   <body>
     @include("partials.navbar")
-    @include("partials.sidebar");
+    @include("partials.sidebar")
     <div class="my-4">
         @yield("app_content")
     </div>

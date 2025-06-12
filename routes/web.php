@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,4 +32,12 @@ Route::group(['prefix'=>'admin'], function(){ //["middleware"=>"auth"]
     Route::get("/logout", [AdminController::class, "getLogout"])->name("logout");
     Route::get("/profile", [AdminController::class, "getProfile"])->name("profile");
     Route::post("/update/password", [AdminController::class, "updatePassword"])->name("update.password");
+
+
+    Route::group(['prefix'=>'posts'], function(){
+        Route::get("/new", [PostController::class, "getNewPost"])->name("new_post");
+        Route::post("/new", [PostController::class, "postNewPost"])->name("new_post");
+    });
+
 });
+
