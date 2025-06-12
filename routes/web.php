@@ -37,6 +37,7 @@ Route::group(['prefix'=>'admin'], function(){ //["middleware"=>"auth"]
     Route::group(['prefix'=>'posts'], function(){
         Route::get("/new", [PostController::class, "getNewPost"])->name("new_post");
         Route::post("/new", [PostController::class, "postNewPost"])->name("new_post");
+        Route::get("/show", [PostController::class, "getShowPosts"])->name("show_posts");;
     });
 
 });

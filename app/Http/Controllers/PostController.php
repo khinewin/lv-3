@@ -8,6 +8,10 @@ use Auth;
 
 class PostController extends Controller
 {
+    public function getShowPosts(){
+        $posts=Post::OrderBy("id", "desc")->paginate(10);
+        return view("admin.posts.show")->with(["posts"=>$posts]);
+    }
     public function postNewPost(Request $request){
         $request->validate([
             'image'=>'required|image|mimes:jpg,jpeg,png|max:1024',

@@ -9,7 +9,7 @@
             <a href="{{ route("new_post") }}" class="btn">Add post</a>
         </li>
         <li class="list-group-item d-grid list-group-item-action">
-            <a href="#" class="btn">Manage posts</a>
+            <a href="{{ route('show_posts') }}" class="btn">Manage posts</a>
         </li>
     </ul>
   </div>
