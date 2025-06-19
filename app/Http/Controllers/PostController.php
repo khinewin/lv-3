@@ -5,9 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Auth;
+use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
+    public function getDeletePost($id){
+        $p=Post::whereId($id)->firstOrFail();
+
+        $image=$p->image;
+        File::delete(public_path($image));
+       // unlink($image);
+        $p->delete();
+        return back()->with("success_msg", "The post has been deleted.");
+    }
     public function getShowPosts(){
         $posts=Post::OrderBy("id", "desc")->paginate(10);
         return view("admin.posts.show")->with(["posts"=>$posts]);
