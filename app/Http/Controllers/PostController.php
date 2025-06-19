@@ -9,6 +9,38 @@ use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
+    public function postUpdatePost(Request $request){
+          $request->validate([
+            'title'=>'required',
+            'content'=>'required'
+        ]);
+
+        $id=$request->id;
+        $p=Post::whereId($id)->firstOrFail();
+
+        if($request->file("image")){
+            //delete old image
+              $image=$p->image;
+               File::delete(public_path($image));
+               //update new image
+            $upload_image=$request->file("image");
+            $ext=$upload_image->getClientOriginalExtension();
+            $image_name=date("ymdhis").".".$ext;
+            $upload_image->move(public_path("images"), $image_name);
+            //update image on tables
+            $p->image="images/".$image_name;
+        }
+        $p->title=$request->title;
+        $p->content=$request->content;
+        $p->update();
+        
+        return redirect()->route("show_posts")->with("success_msg", "The selected post has been udpated.");
+
+    }
+    public function getEditPost($id){
+        $p=Post::where("id", $id)->firstOrFail();
+        return view("admin.posts.edit")->with(["p"=>$p]);
+    }
     public function getDeletePost($id){
         $p=Post::whereId($id)->firstOrFail();
 

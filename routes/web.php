@@ -39,7 +39,8 @@ Route::group(['prefix'=>'admin'], function(){ //["middleware"=>"auth"]
         Route::post("/new", [PostController::class, "postNewPost"])->name("new_post");
         Route::get("/show", [PostController::class, "getShowPosts"])->name("show_posts");
         Route::get("/{id}/delete", [PostController::class, "getDeletePost"])->name("delete_post");
-
+        Route::get("/{id}/edit", [PostController::class, "getEditPost"])->name("edit_post");
+        Route::post("/update", [PostController::class, "postUpdatePost"])->name("update_post");
     });
 
 });

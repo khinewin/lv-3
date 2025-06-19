@@ -30,7 +30,7 @@
                             <td>{{ $p->created_at->diffForHumans() }}</td>
                             <td>
                                 <div class="d-flex">
-                                    <a href="" class="btn btn-secondary btn-sm w-50">Edit</a>
+                                    <a href="{{ route("edit_post", ["id"=>$p->id]) }}" class="btn btn-secondary btn-sm w-50">Edit</a>
                                     <a href="{{ route("delete_post", ["id"=>$p->id]) }}" class="btn btn-danger btn-sm w-50">Delete</a>
                                 </div>
                             </td>
