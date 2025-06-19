@@ -41,6 +41,7 @@ Route::group(['prefix'=>'admin'], function(){ //["middleware"=>"auth"]
         Route::get("/{id}/delete", [PostController::class, "getDeletePost"])->name("delete_post");
         Route::get("/{id}/edit", [PostController::class, "getEditPost"])->name("edit_post");
         Route::post("/update", [PostController::class, "postUpdatePost"])->name("update_post");
+        Route::get("/search", [PostController::class, "getPostsSearch"])->name("admin_posts_search");
     });
 
 });

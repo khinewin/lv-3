@@ -9,8 +9,14 @@ use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
+    public function getPostsSearch(Request $request){
+        $q=$request->q;
+        $posts=Post::where("title", "like", "%$q%")->orWhere("content", "like", "%$q%")->paginate(10);
+        return view("admin.posts.show")->with(["posts"=>$posts]);
+    }
     public function postUpdatePost(Request $request){
           $request->validate([
+            'image'=>'image|mimes:jpg,jpeg,png|max:1024',
             'title'=>'required',
             'content'=>'required'
         ]);
