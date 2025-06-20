@@ -17,6 +17,9 @@ use App\Http\Controllers\FrontendController;
 */
 
 Route::get("/", [FrontendController::class, "getWelcome"])->name("home");
+Route::get("/post/{id}", [FrontendController::class, "getPostDetails"])->name("post_details");
+Route::get("/user/{user_id}/posts", [FrontendController::class, "getPostsByUser"])->name("post-by-user");
+Route::get("/posts/search", [FrontendController::class, "getPostsSearch"])->name("posts_search");
 
 Route::group(['prefix'=>'auth'], function(){
     Route::get("/register", [AuthController::class, "getRegister"])->name("register");
